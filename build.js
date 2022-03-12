@@ -1,6 +1,7 @@
 import browserSync from "browser-sync";
 import esbuild from "esbuild";
 import kontra from "kontra";
+import { copyFile } from 'fs';
 
 const bs = browserSync.create();
 
@@ -20,6 +21,12 @@ async function build() {
       console.error(err);
       process.exit(1);
     });
+
+  copyFile('src/index.html', 'dist/index.html', (error) => {
+    if (error) {
+      console.error(error);
+    }
+  });
   console.log("Build finished");
 }
 
