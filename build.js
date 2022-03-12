@@ -10,10 +10,11 @@ async function build() {
   const result = await esbuild
     .build({
       bundle: true,
+      // format: 'iife',
       entryPoints: ['src/js/main.js'],
       outdir: 'dist',
-      incremental: DEVMODE,
-      minify: !DEVMODE
+      // incremental: DEVMODE,
+      // minify: !DEVMODE
     })
     .catch((err) => {
       console.error(err);
