@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node build.js",
-    "watch": "node build.js --watch",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "watch": "node build.js --watch"
   },
   "type": "module",
   "repository": {
