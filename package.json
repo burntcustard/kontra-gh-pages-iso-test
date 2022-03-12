@@ -1,0 +1,26 @@
+{
+  "name": "kontra-gh-pages-iso-test",
+  "version": "1.0.0",
+  "description": "Trying out the Kontra game engine with GitHub Pages and potentially an ISO-tiles map",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burntcustard/kontra-gh-pages-iso-test.git"
+  },
+  "author": "burntcustard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/burntcustard/kontra-gh-pages-iso-test/issues"
+  },
+  "homepage": "https://github.com/burntcustard/kontra-gh-pages-iso-test#readme",
+  "dependencies": {
+    "browser-sync": "^2.27.7",
+    "esbuild": "^0.14.25",
+    "kontra": "^8.0.0"
+  }
+}
