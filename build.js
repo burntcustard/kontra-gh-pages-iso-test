@@ -51,6 +51,6 @@ async function build() {
   }
 }
 
-mkdirSync('dest', { recursive: true });
+mkdirSync('dist', { recursive: true });
 copyIndex();
 build();
