@@ -6,13 +6,11 @@ import { copyFile, mkdirSync } from 'fs';
 const bs = browserSync.create();
 const DEVMODE = process.argv.slice(2).includes('--watch');
 
-async function copyFilesToDist(filenames) {
-  filenames.forEach(filename => {
-    copyFile(`src/${filename}`, `dist/${filename}`, (error) => {
-      if (error) {
-        throw new Error(error);
-      }
-    });
+async function copyFileToDist(filename) {
+  copyFile(`src/${filename}`, `dist/${filename}`, (error) => {
+    if (error) {
+      throw new Error(error);
+    }
   });
 }
 
@@ -44,13 +42,13 @@ async function build() {
         {
           match: 'src/**/*.css',
           fn: () => {
-            copyFilesToDist(['style.css']);
+            copyFileToDist('style.css');
           },
         },
         {
           match: 'src/index.html',
           fn: () => {
-            copyFilesToDist(['index.html']);
+            copyFileToDist('index.html');
             bs.reload();
           },
         },
@@ -61,5 +59,5 @@ async function build() {
 }
 
 mkdirSync('dist', { recursive: true });
-copyFilesToDist(['style.css', 'index.html']);
+['style.css', 'index.html'].forEach(filename => copyFileToDist(filename));
 build();
