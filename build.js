@@ -6,11 +6,13 @@ import { copyFile, mkdirSync } from 'fs';
 const bs = browserSync.create();
 const DEVMODE = process.argv.slice(2).includes('--watch');
 
-async function copyIndex() {
-  copyFile('src/index.html', 'dist/index.html', (error) => {
-    if (error) {
-      throw new Error(error);
-    }
+async function copyFilesToDist(filenames) {
+  filenames.forEach(filename => {
+    copyFile(`src/${filename}`, `dist/${filename}`, (error) => {
+      if (error) {
+        throw new Error(error);
+      }
+    });
   });
 }
 
@@ -40,9 +42,15 @@ async function build() {
           },
         },
         {
+          match: 'src/**/*.css',
+          fn: () => {
+            copyFilesToDist(['style.css']);
+          },
+        },
+        {
           match: 'src/index.html',
           fn: () => {
-            copyIndex();
+            copyFilesToDist(['index.html']);
             bs.reload();
           },
         },
@@ -52,5 +60,5 @@ async function build() {
 }
 
 mkdirSync('dist', { recursive: true });
-copyIndex();
+copyFilesToDist(['style.css', 'index.html']);
 build();
