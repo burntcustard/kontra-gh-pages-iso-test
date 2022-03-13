@@ -8,7 +8,7 @@ let sprite = Sprite({
   dx: 2,
   width: 20,
   height: 40,
-  color: 'red'
+  color: 'blue'
 });
 
 let loop = GameLoop({
