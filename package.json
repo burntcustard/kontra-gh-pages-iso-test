@@ -4,7 +4,7 @@
   "description": "Trying out the Kontra game engine with GitHub Pages and potentially an ISO-tiles map",
   "main": "index.js",
   "scripts": {
-    "build": "node build.js",
+    "build": "ls && ls src/ && node build.js",
     "watch": "node build.js --watch"
   },
   "type": "module",
