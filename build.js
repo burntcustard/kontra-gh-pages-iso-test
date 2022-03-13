@@ -4,7 +4,6 @@ import kontra from "kontra";
 import { copyFile, mkdirSync } from 'fs';
 
 const bs = browserSync.create();
-
 const DEVMODE = process.argv.slice(2).includes('--watch');
 
 async function copyIndex() {
@@ -16,9 +15,6 @@ async function copyIndex() {
 }
 
 async function build() {
-  mkdirSync('dest');
-  copyIndex();
-
   const buildResult = await esbuild
     .build({
       bundle: true,
@@ -38,15 +34,23 @@ async function build() {
       files: [
         {
           match: 'src/js/**',
-          fn: () => { buildResult.rebuild(); bs.reload(); },
+          fn: () => {
+            buildResult.rebuild();
+            bs.reload();
+          },
         },
         {
           match: 'src/index.html',
-          fn: () => { copyIndex(); bs.reload() },
+          fn: () => {
+            copyIndex();
+            bs.reload();
+          },
         },
       ]
     });
   }
 }
 
+mkdirSync('dest', { recursive: true });
+copyIndex();
 build();
