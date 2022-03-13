@@ -1,7 +1,7 @@
 import browserSync from "browser-sync";
 import esbuild from "esbuild";
 import kontra from "kontra";
-import { copyFile } from 'fs';
+import { copyFile, mkdirSync } from 'fs';
 
 const bs = browserSync.create();
 
@@ -16,6 +16,7 @@ async function copyIndex() {
 }
 
 async function build() {
+  mkdirSync('dest');
   copyIndex();
 
   const buildResult = await esbuild
