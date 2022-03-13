@@ -9,7 +9,7 @@ const DEVMODE = process.argv.slice(2).includes('--watch');
 async function copyIndex() {
   copyFile('src/index.html', 'dist/index.html', (error) => {
     if (error) {
-      console.error(error);
+      throw new Error(error);
     }
   });
 }
