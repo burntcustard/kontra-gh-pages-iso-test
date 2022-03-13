@@ -54,6 +54,7 @@ async function build() {
             bs.reload();
           },
         },
+        'dist/style.css',
       ]
     });
   }
