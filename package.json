@@ -27,7 +27,7 @@
   "dependencies": {
     "browser-sync": "^2.27.7",
     "esbuild": "^0.14.25",
-    "kontra": "^8.0.0",
+    "kontra": "file:../kontra",
     "stylelint": "^14.5.3",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-standard": "^25.0.0"

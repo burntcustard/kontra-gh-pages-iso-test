@@ -59,5 +59,7 @@ async function build() {
 }
 
 mkdirSync('dist', { recursive: true });
+mkdirSync('dist/img', { recursive: true });
+copyFileToDist('img/test-tile.png');
 ['style.css', 'index.html'].forEach(filename => copyFileToDist(filename));
 build();
